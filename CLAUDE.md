@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-PigeonSight is a **process framework for geospatial data workflows**. It defines a technology-agnostic, industry-agnostic methodology for processing geospatial data from capture to stakeholder delivery.
+PigeonSight is a **process framework for drone data workflows**. It defines a standardized methodology for processing drone data from flight to stakeholder delivery, built around the FOSS4G stack with WebODM at its core.
 
-This is an architecture/methodology project, not a code library. The primary deliverables are documentation and process definitions, with reference implementations as supporting examples.
+This is an architecture/methodology project, not a code library. The primary deliverables are documentation and process definitions, with reference implementations as supporting examples. The reference stack is WebODM → PostGIS → QGIS/GeoServer.
 
 ## Repository Structure
 
@@ -42,8 +42,8 @@ Each stage doc at `docs/stages/NN-stage-name.md` defines:
 
 ## The Seven Stages
 
-1. **Data Capture** (`01-data-capture.md`) — Acquire raw data from sensors, drones, surveys, or external sources
-2. **Data Processing** (`02-data-processing.md`) — Transform raw inputs into usable formats
+1. **Data Capture** (`01-data-capture.md`) — Acquire raw imagery and sensor data from drone flights
+2. **Data Processing** (`02-data-processing.md`) — Transform raw inputs into orthophotos, point clouds, and DEMs (reference: WebODM)
 3. **Data Validation** (`03-data-validation.md`) — QA/QC gate; verify data meets quality standards
 4. **Data Cleaning** (`04-data-cleaning.md`) — Normalize schemas, transform coordinates, handle anomalies
 5. **Data Ingestion** (`05-data-ingestion.md`) — Load validated data into target storage
@@ -53,7 +53,9 @@ Each stage doc at `docs/stages/NN-stage-name.md` defines:
 ## Guidelines for Claude
 
 - This is a **framework/architecture project** — focus on documentation quality, not code complexity
-- Maintain technology-agnostic framing throughout (describe *what*, not *how with which tool*)
+- The framework is drone-specific but industry-agnostic; stage descriptions should reflect drone data (imagery, point clouds, DEMs, orthophotos)
+- The reference stack is WebODM → PostGIS → QGIS/GeoServer — use these in examples, not proprietary alternatives
+- Stage structure defines *what* happens; reference implementations show *how* with the FOSS4G stack
 - Reference implementations should be minimal — just enough to demonstrate a stage works
 - Don't over-engineer examples; they exist to illustrate the framework, not to be production systems
 - `templates/qa-checklist.md` is a reusable QA template; new templates go in `templates/`
