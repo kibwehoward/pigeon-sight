@@ -8,13 +8,32 @@ PigeonSight is a **process framework for geospatial data workflows**. It defines
 
 This is an architecture/methodology project, not a code library. The primary deliverables are documentation and process definitions, with reference implementations as supporting examples.
 
-## Current State
+## Repository Structure
 
-The repo currently contains only `README.md`, `CLAUDE.md`, and `diagrams/workflow.png`. The directories `docs/`, `docs/stages/`, and `templates/` are planned but not yet created.
+```
+pigeon-sight/
+├── README.md
+├── CLAUDE.md
+├── diagrams/
+│   ├── workflow.md        # Mermaid diagram (renders on GitHub)
+│   └── workflow.svg       # Standalone SVG for embedding
+├── docs/
+│   ├── overview.md        # Framework overview and routing rules
+│   └── stages/
+│       ├── 01-data-capture.md
+│       ├── 02-data-processing.md
+│       ├── 03-data-validation.md
+│       ├── 04-data-cleaning.md
+│       ├── 05-data-ingestion.md
+│       ├── 06-data-analysis.md
+│       └── 07-stakeholder-delivery.md
+└── templates/
+    └── qa-checklist.md    # Per-run QA checklist covering all seven stages
+```
 
-## Primary Deliverables
+## Stage Document Structure
 
-The main work is creating documentation files. Each stage doc lives at `docs/stages/NN-stage-name.md` and must define:
+Each stage doc at `docs/stages/NN-stage-name.md` defines:
 
 - **Inputs** — What enters the stage (format, source, schema expectations)
 - **Outputs** — What the stage produces (format, destination, artifacts)
