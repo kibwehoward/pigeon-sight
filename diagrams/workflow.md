@@ -2,20 +2,20 @@
 
 ```mermaid
 flowchart TD
-    CAP["**1. Data Capture**\nAcquire raw data"]
-    PRO["**2. Data Processing**\nTransform to usable formats"]
+    CAP["**1. Data Capture**\nAcquire raw drone imagery & sensor data"]
+    PRO["**2. Data Processing**\nWebODM → orthophoto, point cloud, DSM/DTM"]
     VAL{"**3. Data Validation**\nQA/QC Gate"}
-    CLN["**4. Data Cleaning**\nNormalize & repair"]
-    ING["**5. Data Ingestion**\nLoad to target storage"]
-    ANA["**6. Data Analysis**\nQuery & model"]
-    DEL["**7. Stakeholder Delivery**\nPackage & distribute"]
+    CLN["**4. Data Cleaning**\nVoid fill, noise filter, ground classify"]
+    ING["**5. Data Ingestion**\nLoad to PostGIS"]
+    ANA["**6. Data Analysis**\nQGIS / Python (GeoPandas, Rasterio, PDAL)"]
+    DEL["**7. Stakeholder Delivery**\nGeoServer / QGIS layouts / data exports"]
 
     CAP --> PRO
     PRO --> VAL
 
     VAL -->|"✓ Pass"| CLN
-    VAL -->|"✗ Coverage gap"| CAP
-    VAL -->|"✗ Processing artifact\nor CRS error"| PRO
+    VAL -->|"✗ Coverage gap\n(re-flight needed)"| CAP
+    VAL -->|"✗ WebODM artifact\nor CRS error"| PRO
     VAL -->|"✗ Schema / geometry\nerrors"| CLN
 
     CLN --> ING
@@ -38,5 +38,5 @@ flowchart TD
 
 - Stages advance only when all **blocking** QA criteria are met.
 - Failures route back to the **earliest stage** where the root cause can be fixed — not necessarily the prior stage.
-- The **Validation gate** (Stage 3) is the primary checkpoint. It can route back to Stage 1 or Stage 2 depending on the failure type, or forward to Stage 4 for issues that cleaning can resolve.
+- The **Validation gate** (Stage 3) is the primary checkpoint. It can route back to Stage 1 (re-flight) or Stage 2 (reprocess in WebODM) depending on the failure type, or forward to Stage 4 for issues that cleaning can resolve.
 - **Advisory** findings are documented but do not block progression.

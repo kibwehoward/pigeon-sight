@@ -11,7 +11,7 @@
   <!-- 1. Data Capture -->
   <rect x="215" y="60" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
   <text x="340" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1. Data Capture</text>
-  <text x="340" y="102" text-anchor="middle" font-size="11" fill="#aac4f0">Acquire raw data</text>
+  <text x="340" y="102" text-anchor="middle" font-size="11" fill="#aac4f0">Acquire raw drone imagery &amp; sensor data</text>
 
   <!-- arrow 1→2 -->
   <line x1="340" y1="116" x2="340" y2="148" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -19,7 +19,7 @@
   <!-- 2. Data Processing -->
   <rect x="215" y="148" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
   <text x="340" y="172" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2. Data Processing</text>
-  <text x="340" y="190" text-anchor="middle" font-size="11" fill="#aac4f0">Transform to usable formats</text>
+  <text x="340" y="190" text-anchor="middle" font-size="11" fill="#aac4f0">WebODM → orthophoto, point cloud, DSM/DTM</text>
 
   <!-- arrow 2→3 -->
   <line x1="340" y1="204" x2="340" y2="236" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -36,7 +36,7 @@
   <!-- 4. Data Cleaning -->
   <rect x="215" y="332" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
   <text x="340" y="356" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4. Data Cleaning</text>
-  <text x="340" y="374" text-anchor="middle" font-size="11" fill="#aac4f0">Normalize &amp; repair</text>
+  <text x="340" y="374" text-anchor="middle" font-size="11" fill="#aac4f0">Void fill, noise filter, ground classify</text>
 
   <!-- arrow 4→5 -->
   <line x1="340" y1="388" x2="340" y2="420" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -44,7 +44,7 @@
   <!-- 5. Data Ingestion -->
   <rect x="215" y="420" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
   <text x="340" y="444" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">5. Data Ingestion</text>
-  <text x="340" y="462" text-anchor="middle" font-size="11" fill="#aac4f0">Load to target storage</text>
+  <text x="340" y="462" text-anchor="middle" font-size="11" fill="#aac4f0">Load to PostGIS</text>
 
   <!-- arrow 5→6 -->
   <line x1="340" y1="476" x2="340" y2="508" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -52,7 +52,7 @@
   <!-- 6. Data Analysis -->
   <rect x="215" y="508" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
   <text x="340" y="532" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">6. Data Analysis</text>
-  <text x="340" y="550" text-anchor="middle" font-size="11" fill="#aac4f0">Query &amp; model</text>
+  <text x="340" y="550" text-anchor="middle" font-size="11" fill="#aac4f0">QGIS / Python (GeoPandas, Rasterio, PDAL)</text>
 
   <!-- arrow 6→7 -->
   <line x1="340" y1="564" x2="340" y2="596" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -60,7 +60,7 @@
   <!-- 7. Stakeholder Delivery -->
   <rect x="215" y="596" width="250" height="56" rx="6" fill="#0d2b0d" stroke="#4caf50" stroke-width="2"/>
   <text x="340" y="620" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">7. Stakeholder Delivery</text>
-  <text x="340" y="638" text-anchor="middle" font-size="11" fill="#a5d6a7">Package &amp; distribute</text>
+  <text x="340" y="638" text-anchor="middle" font-size="11" fill="#a5d6a7">GeoServer / QGIS layouts / data exports</text>
 
   <!-- ── Failure routing ── -->
 
@@ -70,7 +70,7 @@
 
   <!-- Fail: processing/CRS error → Stage 2 (left side, medium) -->
   <path d="M 215 254 C 130 254 130 176 215 176" fill="none" stroke="#ff5252" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
-  <text x="108" y="222" text-anchor="middle" font-size="9" fill="#ff5252" transform="rotate(-90,108,222)">✗ Processing / CRS</text>
+  <text x="108" y="222" text-anchor="middle" font-size="9" fill="#ff5252" transform="rotate(-90,108,222)">✗ WebODM artifact / CRS</text>
 
   <!-- Fail: schema/geometry → Stage 4 (right side, short) -->
   <path d="M 480 268 C 590 268 590 360 480 360" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowAmber)"/>
