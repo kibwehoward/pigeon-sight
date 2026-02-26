@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -8,32 +8,33 @@ PigeonSight is a **process framework for geospatial data workflows**. It defines
 
 This is an architecture/methodology project, not a code library. The primary deliverables are documentation and process definitions, with reference implementations as supporting examples.
 
-## Repository Structure
+## Current State
 
-```
-pigeonsight/
-├── README.md              # Framework overview
-├── docs/                  # Framework documentation
-│   ├── overview.md
-│   └── stages/            # Stage definitions (inputs, outputs, QA criteria)
-├── diagrams/              # Workflow and architecture diagrams
-└── templates/             # Reusable templates (QA checklists, etc.)
-```
+The repo currently contains only `README.md`, `CLAUDE.md`, and `diagrams/workflow.png`. The directories `docs/`, `docs/stages/`, and `templates/` are planned but not yet created.
+
+## Primary Deliverables
+
+The main work is creating documentation files. Each stage doc lives at `docs/stages/NN-stage-name.md` and must define:
+
+- **Inputs** — What enters the stage (format, source, schema expectations)
+- **Outputs** — What the stage produces (format, destination, artifacts)
+- **QA Criteria** — Verifiable conditions that confirm the stage completed correctly
+- **Failure Handling** — What happens when validation fails (retry, rollback, escalate)
 
 ## The Seven Stages
 
-1. **Data Capture** — Acquire raw data
-2. **Data Processing** — Transform to usable formats
-3. **Data Validation** — QA/QC gate
-4. **Data Cleaning** — Normalize, transform, handle anomalies
-5. **Data Ingestion** — Load to target storage
-6. **Data Analysis** — Query and model
-7. **Stakeholder Delivery** — Package and distribute results
+1. **Data Capture** (`01-data-capture.md`) — Acquire raw data from sensors, drones, surveys, or external sources
+2. **Data Processing** (`02-data-processing.md`) — Transform raw inputs into usable formats
+3. **Data Validation** (`03-data-validation.md`) — QA/QC gate; verify data meets quality standards
+4. **Data Cleaning** (`04-data-cleaning.md`) — Normalize schemas, transform coordinates, handle anomalies
+5. **Data Ingestion** (`05-data-ingestion.md`) — Load validated data into target storage
+6. **Data Analysis** (`06-data-analysis.md`) — Query, model, and extract insights
+7. **Stakeholder Delivery** (`07-stakeholder-delivery.md`) — Package and distribute results
 
 ## Guidelines for Claude
 
 - This is a **framework/architecture project** — focus on documentation quality, not code complexity
-- Reference implementations should be minimal — just enough to demonstrate the stage works
-- When adding content, maintain technology-agnostic framing
-- Stage documentation should define inputs, outputs, QA criteria, and failure handling
+- Maintain technology-agnostic framing throughout (describe *what*, not *how with which tool*)
+- Reference implementations should be minimal — just enough to demonstrate a stage works
 - Don't over-engineer examples; they exist to illustrate the framework, not to be production systems
+- `templates/qa-checklist.md` is a reusable QA template; new templates go in `templates/`
