@@ -1,40 +1,48 @@
 # Stage 2: Data Processing
 
-Transform raw captured data into analysis-ready formats. This stage handles reconstruction, projection, tiling, and format conversion.
+Transform raw drone imagery into analysis-ready geospatial products. This stage handles photogrammetric reconstruction, georeferencing, and output generation. The reference implementation uses **WebODM** (NodeODM engine).
 
 ## Inputs
 
-- Raw data files from Stage 1
+- Raw imagery and sensor data from Stage 1
 - Capture metadata record from Stage 1
-- Processing configuration (target CRS, output resolution, format, tiling scheme if applicable)
-- Ground control points (GCPs) or reference data if georeferencing is required
+- Processing configuration:
+  - Target CRS and output resolution
+  - WebODM task parameters (point cloud quality, mesh octree depth, orthophoto resolution, feature extraction settings)
+- Ground control points (GCPs) if enhanced positional accuracy is required
 
 ## Outputs
 
-- Processed geospatial files in target format (e.g., orthomosaic, classified point cloud, reprojected raster, normalized vector layer)
+- Processed geospatial products in target format:
+  - Orthophoto (GeoTIFF)
+  - Dense point cloud (LAS/LAZ)
+  - Digital surface model / digital terrain model (DSM/DTM, GeoTIFF)
+  - 3D mesh (optional, OBJ/PLY)
 - Processing report including:
-  - Software and version used
-  - Processing parameters applied
+  - WebODM task ID, software version, and parameters applied
   - Output CRS and resolution
   - Processing timestamp
+  - GCP residuals (if GCPs were used)
   - Warnings or anomalies logged during processing
 - Updated file manifest with checksums
 
 ## QA Criteria
 
-- Output files open without errors in at least one standard GIS tool
+- Output files open without errors in QGIS
 - Output CRS matches the target CRS specified in the configuration
 - Spatial extent of outputs is consistent with the capture extent from Stage 1
-- Resolution or density meets the specified target (within acceptable tolerance)
+- Orthophoto resolution (GSD) meets the specified target within acceptable tolerance
+- Point cloud density meets expectations for the flight altitude and overlap achieved
 - Processing report is present and references the input manifest
 - No data voids in areas where input coverage was complete
+- GCP residuals are within the acceptable accuracy threshold (if GCPs were used)
 
 ## Failure Handling
 
 | Failure | Response |
 |---------|----------|
-| Processing job fails or crashes | Capture full error log; retry with diagnostics enabled; escalate if persistent |
-| Output resolution below target | Check input data quality; determine if re-capture or adjusted parameters can resolve |
-| CRS mismatch in output | Reproject to target CRS; log the discrepancy and resolution |
-| Data voids in output | Identify whether void originates from capture gap (return to Stage 1) or processing artifact (reprocess) |
-| GCP accuracy insufficient | Review GCP placement and accuracy; reprocess with corrected GCPs |
+| WebODM task fails or crashes | Capture full task log; retry with diagnostics enabled; adjust processing parameters if systematic |
+| Output resolution (GSD) below target | Check input overlap and altitude; determine if re-flight or adjusted parameters can resolve |
+| CRS mismatch in output | Reproject to target CRS using QGIS or GDAL; log the discrepancy and resolution |
+| Data voids in orthophoto or point cloud | Identify whether void originates from coverage gap (return to Stage 1) or processing artifact (reprocess) |
+| GCP accuracy insufficient | Review GCP placement and coordinate accuracy; reprocess with corrected GCPs |

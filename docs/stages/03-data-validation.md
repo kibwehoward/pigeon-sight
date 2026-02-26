@@ -1,41 +1,45 @@
 # Stage 3: Data Validation
 
-Quality gate. Verify that processed data meets defined standards before it proceeds to cleaning and ingestion. This is the primary checkpoint where non-conforming data is rejected.
+Quality gate. Verify that processed drone data meets defined standards before it proceeds to cleaning and ingestion. This is the primary checkpoint where non-conforming data is rejected.
 
 ## Inputs
 
 - Processed data files and manifest from Stage 2
-- Processing report from Stage 2
-- Validation ruleset (format, CRS, resolution, attribute schema, coverage thresholds)
-- Reference data for accuracy assessment (if positional accuracy validation is required)
+- Processing report from Stage 2 (including WebODM task parameters and GCP residuals)
+- Validation ruleset (format, CRS, resolution/GSD, coverage thresholds, point cloud density)
+- Reference data for accuracy assessment (if positional accuracy validation is required, e.g., check points surveyed independently)
 
 ## Outputs
 
 - Validation report including:
   - Pass/fail result for each rule
   - Summary of failures with severity (blocking vs. advisory)
-  - Positional accuracy metrics (if assessed)
+  - Positional accuracy metrics (RMSE from check points, if assessed)
+  - GSD and point cloud density measurements
   - Attribute completeness statistics
   - Validation timestamp and ruleset version
-- Annotated data files (if issues are flagged inline, e.g., feature-level error flags)
+- Annotated data files (if issues are flagged inline)
 - Decision record: **Pass** (advance to Stage 4), **Conditional Pass** (advance with documented exceptions), or **Fail** (return to earlier stage)
 
 ## QA Criteria
 
 - Every rule in the validation ruleset has a recorded result
 - All blocking rules have passed (or exceptions are formally documented and approved)
-- Positional accuracy meets the specified tolerance (e.g., RMSE ≤ threshold)
-- Attribute schema matches the expected schema: required fields present, correct data types, values within defined domains
-- No geometry errors (e.g., self-intersections, null geometries, invalid coordinate values)
+- Positional accuracy meets the specified tolerance (e.g., RMSE ≤ threshold relative to check points)
+- GSD of the orthophoto meets the target specified in the flight plan
+- Point cloud density meets the minimum threshold for the intended analysis
+- Output CRS is correct and consistent across all products (orthophoto, DSM/DTM, point cloud)
+- No data voids in areas where coverage was confirmed complete in Stage 1
 - Coverage meets the minimum threshold for the area of interest
 
 ## Failure Handling
 
 | Failure | Severity | Response |
 |---------|----------|----------|
-| Geometry errors | Blocking | Return to Stage 4 (Data Cleaning) for repair, or Stage 2 if errors are systematic |
+| GSD below target | Blocking | Assess root cause (altitude, overlap, processing parameters); return to Stage 2 or Stage 1 |
+| Point cloud density insufficient | Blocking | Return to Stage 2 for reprocessing; if insufficient input overlap, return to Stage 1 |
 | CRS mismatch | Blocking | Return to Stage 2 for reprocessing |
-| Required attribute missing | Blocking | Return to Stage 4 for enrichment or Stage 1 if source data is absent |
-| Positional accuracy below threshold | Blocking | Assess root cause (GCPs, processing); return to Stage 2 or Stage 1 |
+| Positional accuracy below threshold | Blocking | Assess GCP placement and accuracy; return to Stage 2 or Stage 1 |
+| Data voids in coverage area | Blocking | Return to Stage 1 if gap is in source imagery; return to Stage 2 if processing artifact |
 | Advisory issues only | Advisory | Document in validation report; advance with notation |
-| Coverage below minimum | Blocking | Return to Stage 1 for additional capture |
+| Coverage below minimum | Blocking | Return to Stage 1 for additional flight coverage |
