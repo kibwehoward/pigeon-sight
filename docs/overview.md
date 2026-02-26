@@ -37,6 +37,10 @@ Each stage document defines:
 - **QA Criteria** — Verifiable conditions that must be met before advancing
 - **Failure Handling** — How specific failure modes are routed and resolved
 
+## Further Reading
+
+- [Methodology](methodology.md) — The process thinking behind the framework: gate-based stages, the Scrum parallel, and Stage 3 as a formal QA gate
+
 ## Routing Rules
 
 - A stage advances when all **blocking** QA criteria are met.
