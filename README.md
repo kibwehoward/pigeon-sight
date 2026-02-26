@@ -1,8 +1,8 @@
 # PigeonSight
 
-**A process framework for geospatial data workflows.**
+**A process framework for drone data workflows.**
 
-PigeonSight defines a standardized methodology for processing geospatial data from capture to stakeholder delivery. It's technology-agnostic and industry-agnostic — the framework adapts to your existing tools and domain.
+PigeonSight defines a standardized methodology for processing drone data from flight to stakeholder delivery, built around the FOSS4G stack with WebODM at its core. The framework defines *what* happens at each stage — your tools define *how*.
 
 ---
 
@@ -11,18 +11,18 @@ PigeonSight defines a standardized methodology for processing geospatial data fr
 - **Pi** — Precision, measurement, mathematical rigor
 - **Geo** — Geospatial analysis, location-based intelligence
 - **nSight** — Insight from raw data
-- **Pigeon** — NYC's most ubiquitous, overlooked, resilient creature
+- **Pigeon** — Nature's most ubiquitous, overlooked, resilient creature
 
 ---
 
 ## The Framework
 
-PigeonSight defines seven stages for geospatial data workflows:
+PigeonSight defines seven stages for drone data workflows:
 
 | Stage | Purpose |
 |-------|---------|
-| **Data Capture** | Acquire raw data from sensors, drones, surveys, or external sources |
-| **Data Processing** | Transform raw inputs into usable formats |
+| **Data Capture** | Acquire raw imagery and sensor data from drone flights |
+| **Data Processing** | Transform raw inputs into orthophotos, point clouds, and DEMs |
 | **Data Validation** | QA/QC gate — verify data meets quality standards |
 | **Data Cleaning** | Handle anomalies, normalize schemas, transform coordinates |
 | **Data Ingestion** | Load validated data into target storage systems |
@@ -39,45 +39,39 @@ See the [workflow diagram](diagrams/workflow.md) for the full pipeline with rout
 
 ---
 
-## Technology Agnostic
+## Reference Stack
 
-PigeonSight works with your existing stack. The framework defines *what* happens at each stage — your tools define *how*.
+PigeonSight is designed around open-source tools. These are the reference implementations for each stage — other tools fit the same stages, but this is the stack the framework is built to demonstrate.
 
-**Data Capture**
-- Drones: DJI, senseFly, custom builds
-- Processing: WebODM, Pix4D, DroneDeploy, Metashape
-- Sensors: LiDAR, multispectral, RGB
-- External: APIs, open data portals, file transfers
+| Stage | Reference Tool |
+|-------|---------------|
+| Data Capture | DJI / senseFly / custom builds |
+| Data Processing | **WebODM** (NodeODM engine) |
+| Data Storage | **PostGIS** (PostgreSQL + spatial extension) |
+| Data Analysis | **QGIS** / Python (GeoPandas, Rasterio) |
+| Data Delivery | **GeoServer** / QGIS Server |
 
-**Data Storage**
-- Open source: PostgreSQL/PostGIS, GeoPackage, SpatiaLite
-- Enterprise: Esri Enterprise Geodatabase, SQL Server, Oracle Spatial
-- Cloud: Snowflake, BigQuery, AWS RDS
-
-**Analysis & Delivery**
-- Desktop: QGIS, ArcGIS Pro, Global Mapper
-- Web: ArcGIS Online, GeoServer, MapBox
-- Code: Python, R, SQL
+WebODM is the vanguard of this stack — it handles the most compute-intensive transformation (raw imagery → orthophoto/point cloud/DEM) and its output format defines the schema expectations for downstream stages.
 
 ---
 
 ## When to Use PigeonSight
 
-PigeonSight applies wherever geospatial data flows from collection to decision-making:
+Any domain where drone imagery drives decision-making:
 
-- **Agriculture** — Crop health monitoring, yield analysis
+- **Agriculture** — Crop health monitoring, yield analysis, irrigation planning
 - **Construction** — Site surveys, progress tracking, as-builts
-- **Disaster Response** — Damage assessment, resource allocation
+- **Disaster Response** — Damage assessment, search and rescue support
 - **Energy** — Infrastructure inspection, environmental compliance
-- **Government** — Land management, urban planning, census analysis
-- **Environmental** — Habitat mapping, change detection
+- **Government** — Land management, urban planning, parcel analysis
+- **Environmental** — Habitat mapping, change detection, erosion monitoring
 
 ---
 
 ## Repository Structure
 
 ```
-pigeonsight/
+pigeon-sight/
 ├── README.md
 ├── docs/
 │   ├── overview.md
