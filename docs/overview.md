@@ -1,10 +1,10 @@
 # PigeonSight Framework Overview
 
-PigeonSight is a process framework for geospatial data workflows. It defines a standardized, technology-agnostic methodology for moving geospatial data from capture to stakeholder delivery.
+PigeonSight is a process framework for drone data workflows. It defines a standardized methodology for moving drone data from flight to stakeholder delivery, built around the FOSS4G stack with WebODM at its core.
 
 ## Design Principles
 
-**Technology-agnostic.** The framework defines *what* happens at each stage. Your tools define *how*. The same seven stages apply whether you're processing drone imagery with Pix4D, ingesting LiDAR to PostGIS, or delivering results through ArcGIS Online.
+**Reference stack.** The framework defines *what* happens at each stage; the FOSS4G stack defines the reference *how*: WebODM for photogrammetric processing, PostGIS for spatial storage, QGIS and Python for analysis, GeoServer for delivery. Other tools fit the same stages, but the reference implementations use this stack.
 
 **Gate-based progression.** Each stage produces defined outputs and must meet QA criteria before the next stage begins. Data that fails validation is routed back — not forward.
 
@@ -20,13 +20,13 @@ PigeonSight is a process framework for geospatial data workflows. It defines a s
 
 | Stage | Purpose | Gate |
 |-------|---------|------|
-| [1. Data Capture](stages/01-data-capture.md) | Acquire raw data | Manifest complete, checksums match |
-| [2. Data Processing](stages/02-data-processing.md) | Transform to usable formats | Output meets target CRS and resolution |
+| [1. Data Capture](stages/01-data-capture.md) | Acquire raw imagery and sensor data from drone flights | Manifest complete, checksums match, overlap verified |
+| [2. Data Processing](stages/02-data-processing.md) | Generate orthophoto, point cloud, DSM/DTM via WebODM | Output meets target CRS, GSD, and point cloud density |
 | [3. Data Validation](stages/03-data-validation.md) | QA/QC checkpoint | All blocking rules pass |
 | [4. Data Cleaning](stages/04-data-cleaning.md) | Normalize, repair, standardize | Schema conformant, issues resolved |
-| [5. Data Ingestion](stages/05-data-ingestion.md) | Load to target storage | Record counts match, index built |
+| [5. Data Ingestion](stages/05-data-ingestion.md) | Load to PostGIS | Record counts match, spatial index built |
 | [6. Data Analysis](stages/06-data-analysis.md) | Query, model, extract insights | Results reproducible, sanity-checked |
-| [7. Stakeholder Delivery](stages/07-stakeholder-delivery.md) | Package and distribute | Artifacts delivered, receipt confirmed |
+| [7. Stakeholder Delivery](stages/07-stakeholder-delivery.md) | Distribute via GeoServer, QGIS layouts, or data exports | Artifacts delivered, receipt confirmed |
 
 ## Stage Document Structure
 
