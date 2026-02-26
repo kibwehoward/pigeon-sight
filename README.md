@@ -35,6 +35,8 @@ Each stage has defined:
 - **QA Criteria** — How to verify the stage completed successfully
 - **Failure Handling** — What happens when validation fails
 
+See the [workflow diagram](diagrams/workflow.md) for the full pipeline with routing logic, or embed [workflow.svg](diagrams/workflow.svg) in reports and presentations.
+
 ---
 
 ## Technology Agnostic
@@ -88,7 +90,8 @@ pigeonsight/
 │       ├── 06-data-analysis.md
 │       └── 07-stakeholder-delivery.md
 ├── diagrams/
-│   └── workflow.png
+│   ├── workflow.md        # Mermaid diagram (renders on GitHub)
+│   └── workflow.svg       # Standalone SVG for embedding
 └── templates/
     └── qa-checklist.md
 ```
