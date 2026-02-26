@@ -6,7 +6,7 @@ PigeonSight defines a standardized methodology for processing drone data from fl
 
 ---
 
-## Origin
+## From Pests to Programs
 
 PigeonSight grew out of a field inspection problem. Working in agricultural pest management, the need to conduct site surveys over large areas pointed toward sUAS — small drones capable of capturing the imagery needed for orthomosaics and 3D models of fields, structures, and vector habitat. The tools to process that imagery existed. The process framework to manage the data reliably, repeatably, and without a proprietary subscription did not.
 
