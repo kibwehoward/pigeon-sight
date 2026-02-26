@@ -6,6 +6,16 @@ PigeonSight defines a standardized methodology for processing drone data from fl
 
 ---
 
+## Origin
+
+PigeonSight grew out of a field inspection problem. Working in agricultural pest management, the need to conduct site surveys over large areas pointed toward sUAS — small drones capable of capturing the imagery needed for orthomosaics and 3D models of fields, structures, and vector habitat. The tools to process that imagery existed. The process framework to manage the data reliably, repeatably, and without a proprietary subscription did not.
+
+The available commercial solutions were expensive and opaque. The FOSS4G stack — WebODM, PostGIS, QGIS — could do the work, but nothing defined *how* the workflow should be structured: what the stages were, what constituted done at each stage, how failures should be handled, or how a dataset should be traced from flight to delivery.
+
+PigeonSight is that framework. Seven stages, a formal QA gate, defined inputs and outputs at every step, and a reference implementation built entirely on open-source tools.
+
+---
+
 ## Why the Name
 
 - **Pi** — Precision, measurement, mathematical rigor
