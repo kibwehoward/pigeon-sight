@@ -15,8 +15,9 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 - [ ] All files in manifest are present
 - [ ] Checksums verified for all files
-- [ ] Capture metadata record complete (source, timestamp, CRS, sensor, extent)
+- [ ] Capture metadata record complete (drone/sensor, timestamp, CRS, flight parameters, extent)
 - [ ] Coverage extent matches area of interest
+- [ ] Achieved overlap/sidelap meets minimums specified in flight plan
 - [ ] Capture timestamps fall within expected window
 - [ ] No unintended duplicate captures
 
@@ -24,13 +25,16 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ---
 
-## Stage 2: Data Processing
+## Stage 2: Data Processing (WebODM)
 
-- [ ] Output files open without errors
+- [ ] WebODM task completed without errors; task ID recorded
+- [ ] Orthophoto opens without errors in QGIS
 - [ ] Output CRS matches target CRS
 - [ ] Spatial extent consistent with Stage 1 capture extent
-- [ ] Output resolution / point density meets target
+- [ ] Orthophoto GSD meets target resolution
+- [ ] Point cloud density meets target for intended analysis
 - [ ] Processing report present and references input manifest
+- [ ] GCP residuals within acceptable threshold (if GCPs used)
 - [ ] No data voids in areas with complete input coverage
 
 **Advisory notes:**
@@ -41,10 +45,12 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 - [ ] All validation rules have a recorded result
 - [ ] All blocking rules passed (or exceptions formally documented and approved)
-- [ ] No geometry errors (self-intersections, null geometries, invalid coordinates)
-- [ ] Attribute schema matches expected schema (fields, types, domains)
-- [ ] Positional accuracy meets specified tolerance
-- [ ] Coverage meets minimum threshold
+- [ ] GSD confirmed against flight plan target
+- [ ] Point cloud density confirmed against minimum threshold
+- [ ] Output CRS consistent across all products (orthophoto, DSM/DTM, point cloud)
+- [ ] Positional accuracy meets specified tolerance (RMSE vs. check points, if assessed)
+- [ ] No data voids in coverage area
+- [ ] Coverage meets minimum threshold for area of interest
 
 **Decision:** `[ ] Pass` &nbsp; `[ ] Conditional Pass` &nbsp; `[ ] Fail — route to Stage ___`
 
@@ -54,56 +60,57 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ## Stage 4: Data Cleaning
 
-- [ ] All geometry errors from Stage 3 report are resolved
-- [ ] Attribute values conform to target schema
-- [ ] No duplicate features
+- [ ] Orthophoto voids filled or masked; no artifacts at fill boundaries
+- [ ] Point cloud noise filtered; ground classification complete across full extent
+- [ ] DSM/DTM values within physically plausible range for surveyed area
 - [ ] Coordinate values within valid range for target CRS
 - [ ] Cleaning log accounts for every issue flagged in Stage 3
-- [ ] Record count changes explained in cleaning log
-- [ ] Unresolvable records flagged with disposition (hold / drop / escalate)
+- [ ] Coverage changes explained in cleaning log
+- [ ] Unresolvable areas flagged with disposition (hold / mask / escalate)
 
 **Advisory notes:**
 
 ---
 
-## Stage 5: Data Ingestion
+## Stage 5: Data Ingestion (PostGIS)
 
-- [ ] Record count in target matches expected count from manifest
-- [ ] Spatial index built and functional
-- [ ] Spot-check query returns correct geometry and attributes
+- [ ] Record or tile count in PostGIS matches expected count from manifest
+- [ ] Spatial index built and functional (verified with sample query)
+- [ ] Spot-check in QGIS returns correct geometry and attributes
 - [ ] No attribute truncation or coordinate precision loss
 - [ ] Re-run with same manifest does not create duplicates
-- [ ] Lineage record complete (references Stage 1 capture metadata)
+- [ ] Lineage record complete (references Stage 1 capture metadata and Stage 2 WebODM task ID)
 
 **Advisory notes:**
 
 ---
 
-## Stage 6: Data Analysis
+## Stage 6: Data Analysis (QGIS / Python)
 
-- [ ] Results are reproducible with same inputs
+- [ ] Results are reproducible with same inputs (SQL, QGIS project, or Python script retained)
 - [ ] All inputs are traceable (no undocumented external data)
 - [ ] Spatial operations used correct CRS; results in expected CRS
 - [ ] Derived layers have no geometry errors
-- [ ] Edge cases handled and documented
-- [ ] Results sanity-checked against reference areas or historical values
+- [ ] Edge cases handled and documented (masked areas, null values, out-of-range raster inputs)
+- [ ] Results sanity-checked against ground truth, reference areas, or historical flight values
 - [ ] Model accuracy assessment complete (if applicable)
 
 **Advisory notes:**
 
 ---
 
-## Stage 7: Stakeholder Delivery
+## Stage 7: Stakeholder Delivery (GeoServer / QGIS)
 
 - [ ] All requested artifacts present and match delivery specification
 - [ ] Artifacts open correctly in stakeholder tools
+- [ ] GeoServer services return correct data and render without errors (if applicable)
 - [ ] Spatial exports in stakeholder-specified CRS
 - [ ] Access controls applied and verified
 - [ ] Metadata and attribution included in all deliverables
-- [ ] Known limitations communicated in delivery package
+- [ ] Known limitations from Stage 6 communicated in delivery package
 - [ ] Delivery confirmation received from stakeholders
 - [ ] All stage outputs and logs archived
-- [ ] Complete lineage record filed
+- [ ] Complete lineage record filed (capture → WebODM → PostGIS → analysis → delivery)
 
 **Advisory notes:**
 
