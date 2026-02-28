@@ -26,9 +26,9 @@ Quality gate. Verify that processed drone data meets defined standards before it
 - Every rule in the validation ruleset has a recorded result
 - All blocking rules have passed (or exceptions are formally documented and approved)
 - Positional accuracy meets the specified tolerance (e.g., RMSE ≤ threshold relative to check points)
-- GSD of the orthophoto meets the target specified in the flight plan
+- GSD of the orthomosaic meets the target specified in the flight plan
 - Point cloud density meets the minimum threshold for the intended analysis
-- Output CRS is correct and consistent across all products (orthophoto, DSM/DTM, point cloud)
+- Output CRS is correct and consistent across all products (orthomosaic, DSM/DTM, point cloud)
 - No data voids in areas where coverage was confirmed complete in Stage 1
 - Coverage meets the minimum threshold for the area of interest
 

@@ -39,7 +39,7 @@ This is the same pattern as a QA sign-off in a software release cycle: defined c
 
 Every dataset that passes through PigeonSight carries a lineage record from original capture through final delivery. This is the equivalent of a commit history or a change log — a traceable record of what data entered the pipeline, what transformations were applied, and what decisions were made at each gate.
 
-The lineage record closes the loop between the QA checklist (what was verified) and the delivery artifact (what was delivered). Without it, a stakeholder question — "how was this orthophoto produced?" — has no reliable answer.
+The lineage record closes the loop between the QA checklist (what was verified) and the delivery artifact (what was delivered). Without it, a stakeholder question — "how was this orthomosaic produced?" — has no reliable answer.
 
 ## Why This Matters
 

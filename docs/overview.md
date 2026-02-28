@@ -21,7 +21,7 @@ PigeonSight is a process framework for drone data workflows. It defines a standa
 | Stage | Purpose | Gate |
 |-------|---------|------|
 | [1. Data Capture](stages/01-data-capture.md) | Acquire raw imagery and sensor data from drone flights | Manifest complete, checksums match, overlap verified |
-| [2. Data Processing](stages/02-data-processing.md) | Generate orthophoto, point cloud, DSM/DTM via WebODM | Output meets target CRS, GSD, and point cloud density |
+| [2. Data Processing](stages/02-data-processing.md) | Generate orthomosaic, point cloud, DSM/DTM via WebODM | Output meets target CRS, GSD, and point cloud density |
 | [3. Data Validation](stages/03-data-validation.md) | QA/QC checkpoint | All blocking rules pass |
 | [4. Data Cleaning](stages/04-data-cleaning.md) | Normalize, repair, standardize | Schema conformant, issues resolved |
 | [5. Data Ingestion](stages/05-data-ingestion.md) | Load to PostGIS | Record counts match, spatial index built |

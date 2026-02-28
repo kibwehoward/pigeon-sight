@@ -28,10 +28,10 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 ## Stage 2: Data Processing (WebODM)
 
 - [ ] WebODM task completed without errors; task ID recorded
-- [ ] Orthophoto opens without errors in QGIS
+- [ ] Orthomosaic opens without errors in QGIS
 - [ ] Output CRS matches target CRS
 - [ ] Spatial extent consistent with Stage 1 capture extent
-- [ ] Orthophoto GSD meets target resolution
+- [ ] Orthomosaic GSD meets target resolution
 - [ ] Point cloud density meets target for intended analysis
 - [ ] Processing report present and references input manifest
 - [ ] GCP residuals within acceptable threshold (if GCPs used)
@@ -47,7 +47,7 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 - [ ] All blocking rules passed (or exceptions formally documented and approved)
 - [ ] GSD confirmed against flight plan target
 - [ ] Point cloud density confirmed against minimum threshold
-- [ ] Output CRS consistent across all products (orthophoto, DSM/DTM, point cloud)
+- [ ] Output CRS consistent across all products (orthomosaic, DSM/DTM, point cloud)
 - [ ] Positional accuracy meets specified tolerance (RMSE vs. check points, if assessed)
 - [ ] No data voids in coverage area
 - [ ] Coverage meets minimum threshold for area of interest
@@ -60,7 +60,7 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ## Stage 4: Data Cleaning
 
-- [ ] Orthophoto voids filled or masked; no artifacts at fill boundaries
+- [ ] Orthomosaic voids filled or masked; no artifacts at fill boundaries
 - [ ] Point cloud noise filtered; ground classification complete across full extent
 - [ ] DSM/DTM values within physically plausible range for surveyed area
 - [ ] Coordinate values within valid range for target CRS

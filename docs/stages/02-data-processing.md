@@ -8,13 +8,13 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
 - Capture metadata record from Stage 1
 - Processing configuration:
   - Target CRS and output resolution
-  - WebODM task parameters (point cloud quality, mesh octree depth, orthophoto resolution, feature extraction settings)
+  - WebODM task parameters (point cloud quality, mesh octree depth, orthomosaic resolution, feature extraction settings)
 - Ground control points (GCPs) if enhanced positional accuracy is required
 
 ## Outputs
 
 - Processed geospatial products in target format:
-  - Orthophoto (GeoTIFF)
+  - Orthomosaic (GeoTIFF)
   - Dense point cloud (LAS/LAZ)
   - Digital surface model / digital terrain model (DSM/DTM, GeoTIFF)
   - 3D mesh (optional, OBJ/PLY)
@@ -31,7 +31,7 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
 - Output files open without errors in QGIS
 - Output CRS matches the target CRS specified in the configuration
 - Spatial extent of outputs is consistent with the capture extent from Stage 1
-- Orthophoto resolution (GSD) meets the specified target within acceptable tolerance
+- Orthomosaic resolution (GSD) meets the specified target within acceptable tolerance
 - Point cloud density meets expectations for the flight altitude and overlap achieved
 - Processing report is present and references the input manifest
 - No data voids in areas where input coverage was complete
@@ -44,5 +44,5 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
 | WebODM task fails or crashes | Capture full task log; retry with diagnostics enabled; adjust processing parameters if systematic |
 | Output resolution (GSD) below target | Check input overlap and altitude; determine if re-flight or adjusted parameters can resolve |
 | CRS mismatch in output | Reproject to target CRS using QGIS or GDAL; log the discrepancy and resolution |
-| Data voids in orthophoto or point cloud | Identify whether void originates from coverage gap (return to Stage 1) or processing artifact (reprocess) |
+| Data voids in orthomosaic or point cloud | Identify whether void originates from coverage gap (return to Stage 1) or processing artifact (reprocess) |
 | GCP accuracy insufficient | Review GCP placement and coordinate accuracy; reprocess with corrected GCPs |

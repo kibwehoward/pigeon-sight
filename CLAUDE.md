@@ -43,7 +43,7 @@ Each stage doc at `docs/stages/NN-stage-name.md` defines:
 ## The Seven Stages
 
 1. **Data Capture** (`01-data-capture.md`) — Acquire raw imagery and sensor data from drone flights
-2. **Data Processing** (`02-data-processing.md`) — Transform raw inputs into orthophotos, point clouds, and DEMs (reference: WebODM)
+2. **Data Processing** (`02-data-processing.md`) — Transform raw inputs into orthomosaics, point clouds, and DEMs (reference: WebODM)
 3. **Data Validation** (`03-data-validation.md`) — QA/QC gate; verify data meets quality standards
 4. **Data Cleaning** (`04-data-cleaning.md`) — Normalize schemas, transform coordinates, handle anomalies
 5. **Data Ingestion** (`05-data-ingestion.md`) — Load validated data into target storage
@@ -53,7 +53,7 @@ Each stage doc at `docs/stages/NN-stage-name.md` defines:
 ## Guidelines for Claude
 
 - This is a **framework/architecture project** — focus on documentation quality, not code complexity
-- The framework is drone-specific but industry-agnostic; stage descriptions should reflect drone data (imagery, point clouds, DEMs, orthophotos)
+- The framework is drone-specific but industry-agnostic; stage descriptions should reflect drone data (imagery, point clouds, DEMs, orthomosaics)
 - The reference stack is WebODM → PostGIS → QGIS/GeoServer — use these in examples, not proprietary alternatives
 - Stage structure defines *what* happens; reference implementations show *how* with the FOSS4G stack
 - Reference implementations should be minimal — just enough to demonstrate a stage works

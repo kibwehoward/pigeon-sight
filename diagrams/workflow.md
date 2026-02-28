@@ -3,7 +3,7 @@
 ```mermaid
 flowchart TD
     CAP["**1. Data Capture**\nAcquire raw drone imagery & sensor data"]
-    PRO["**2. Data Processing**\nWebODM → orthophoto, point cloud, DSM/DTM"]
+    PRO["**2. Data Processing**\nWebODM → orthomosaic, point cloud, DSM/DTM"]
     VAL{"**3. Data Validation**\nQA/QC Gate"}
     CLN["**4. Data Cleaning**\nVoid fill, noise filter, ground classify"]
     ING["**5. Data Ingestion**\nLoad to PostGIS"]

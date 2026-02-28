@@ -12,7 +12,7 @@ Normalize, repair, and transform validated drone data into a consistent, analysi
 ## Outputs
 
 - Cleaned data files conforming to the target schema:
-  - Orthophoto with voids filled or masked
+  - Orthomosaic with voids filled or masked
   - Point cloud with noise filtered and ground points classified
   - DSM/DTM with artifacts removed and voids interpolated
   - Vector layers derived from raster products (if applicable)
@@ -27,7 +27,7 @@ Normalize, repair, and transform validated drone data into a consistent, analysi
 ## QA Criteria
 
 - All issues identified in the validation report are resolved or formally documented as accepted exceptions
-- Orthophoto voids are filled or masked with no unintended artifacts introduced at fill boundaries
+- Orthomosaic voids are filled or masked with no unintended artifacts introduced at fill boundaries
 - Point cloud noise is filtered; ground classification covers the full extent
 - DSM/DTM values are within physically plausible range for the surveyed area
 - Coordinate values are within the valid range for the target CRS
@@ -39,7 +39,7 @@ Normalize, repair, and transform validated drone data into a consistent, analysi
 
 | Failure | Response |
 |---------|----------|
-| Orthophoto void cannot be filled acceptably | Mask the void and document extent; flag for re-flight if area is critical to the analysis |
+| Orthomosaic void cannot be filled acceptably | Mask the void and document extent; flag for re-flight if area is critical to the analysis |
 | Point cloud noise or artifacts are systematic, not isolated | Escalate to Stage 2; systematic artifacts indicate a processing problem rather than a cleaning task |
 | Ground classification fails over complex terrain | Adjust PDAL/CloudCompare classification parameters; document parameter choices in cleaning log |
 | Cleaning introduces new validation failures | Re-run Stage 3 validation rules against cleaned output before advancing |
