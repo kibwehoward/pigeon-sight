@@ -20,13 +20,13 @@ PigeonSight is a process framework for drone data workflows. It defines a standa
 
 | Stage | Purpose | Gate |
 |-------|---------|------|
-| [1. Data Capture](stages/01-data-capture.md) | Acquire raw imagery and sensor data from drone flights | Manifest complete, checksums match, overlap verified |
-| [2. Data Processing](stages/02-data-processing.md) | Generate orthomosaic, point cloud, DSM/DTM via WebODM | Output meets target CRS, GSD, and point cloud density |
-| [3. Data Validation](stages/03-data-validation.md) | QA/QC checkpoint | All blocking rules pass |
-| [4. Data Cleaning](stages/04-data-cleaning.md) | Normalize, repair, standardize | Schema conformant, issues resolved |
-| [5. Data Ingestion](stages/05-data-ingestion.md) | Load to PostGIS | Record counts match, spatial index built |
-| [6. Data Analysis](stages/06-data-analysis.md) | Query, model, extract insights | Results reproducible, sanity-checked |
-| [7. Stakeholder Delivery](stages/07-stakeholder-delivery.md) | Distribute via GeoServer, QGIS layouts, or data exports | Artifacts delivered, receipt confirmed |
+| [1. Capture](stages/01-capture.md) | Acquire raw imagery and sensor data from drone flights | Manifest complete, checksums match, overlap verified |
+| [2. Processing](stages/02-processing.md) | Generate orthomosaic, point cloud, DSM/DTM via WebODM | Output meets target CRS, GSD, and point cloud density |
+| [3. Validation](stages/03-validation.md) | QA/QC checkpoint | All blocking rules pass |
+| [4. Cleaning](stages/04-cleaning.md) | Normalize, repair, standardize | Schema conformant, issues resolved |
+| [5. Ingestion](stages/05-ingestion.md) | Load to PostGIS | Record counts match, spatial index built |
+| [6. Analysis](stages/06-analysis.md) | Query, model, extract insights | Results reproducible, sanity-checked |
+| [7. Delivery](stages/07-delivery.md) | Distribute via GeoServer, QGIS layouts, or data exports | Artifacts delivered, receipt confirmed |
 
 ## Stage Document Structure
 

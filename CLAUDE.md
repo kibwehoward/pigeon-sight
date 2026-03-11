@@ -20,13 +20,13 @@ pigeon-sight/
 ├── docs/
 │   ├── overview.md        # Framework overview and routing rules
 │   └── stages/
-│       ├── 01-data-capture.md
-│       ├── 02-data-processing.md
-│       ├── 03-data-validation.md
-│       ├── 04-data-cleaning.md
-│       ├── 05-data-ingestion.md
-│       ├── 06-data-analysis.md
-│       └── 07-stakeholder-delivery.md
+│       ├── 01-capture.md
+│       ├── 02-processing.md
+│       ├── 03-validation.md
+│       ├── 04-cleaning.md
+│       ├── 05-ingestion.md
+│       ├── 06-analysis.md
+│       └── 07-delivery.md
 └── templates/
     └── qa-checklist.md    # Per-run QA checklist covering all seven stages
 ```
@@ -42,13 +42,13 @@ Each stage doc at `docs/stages/NN-stage-name.md` defines:
 
 ## The Seven Stages
 
-1. **Data Capture** (`01-data-capture.md`) — Acquire raw imagery and sensor data from drone flights
-2. **Data Processing** (`02-data-processing.md`) — Transform raw inputs into orthomosaics, point clouds, and DEMs (reference: WebODM)
-3. **Data Validation** (`03-data-validation.md`) — QA/QC gate; verify data meets quality standards
-4. **Data Cleaning** (`04-data-cleaning.md`) — Normalize schemas, transform coordinates, handle anomalies
-5. **Data Ingestion** (`05-data-ingestion.md`) — Load validated data into target storage
-6. **Data Analysis** (`06-data-analysis.md`) — Query, model, and extract insights
-7. **Stakeholder Delivery** (`07-stakeholder-delivery.md`) — Package and distribute results
+1. **Capture** (`01-capture.md`) — Acquire raw imagery and sensor data from drone flights
+2. **Processing** (`02-processing.md`) — Transform raw inputs into orthomosaics, point clouds, and DEMs (reference: WebODM)
+3. **Validation** (`03-validation.md`) — QA/QC gate; verify data meets quality standards
+4. **Cleaning** (`04-cleaning.md`) — Normalize schemas, transform coordinates, handle anomalies
+5. **Ingestion** (`05-ingestion.md`) — Load validated data into target storage
+6. **Analysis** (`06-analysis.md`) — Query, model, and extract insights
+7. **Delivery** (`07-delivery.md`) — Package and distribute results
 
 ## Guidelines for Claude
 

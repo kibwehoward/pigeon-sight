@@ -120,10 +120,10 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 | Stage | Reviewer | Date | Result |
 |-------|----------|------|--------|
-| 1 — Data Capture | | | |
-| 2 — Data Processing | | | |
-| 3 — Data Validation | | | |
-| 4 — Data Cleaning | | | |
-| 5 — Data Ingestion | | | |
-| 6 — Data Analysis | | | |
-| 7 — Stakeholder Delivery | | | |
+| 1 — Capture | | | |
+| 2 — Processing | | | |
+| 3 — Validation | | | |
+| 4 — Cleaning | | | |
+| 5 — Ingestion | | | |
+| 6 — Analysis | | | |
+| 7 — Delivery | | | |
