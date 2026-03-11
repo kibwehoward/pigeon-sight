@@ -1,8 +1,6 @@
 # PigeonSight
 
-**A process framework for drone data workflows.**
-
-PigeonSight defines a standardized methodology for processing drone data from sensor to stakeholder delivery, built around the FOSS4G stack with WebODM at its core. The framework defines *what* happens at each stage — your tools define *how*.
+**PigeonSight is a modular operational framework for drone-data workflows. It defines how imagery moves from capture to delivery — through intake, processing, QA, orchestration, and handoff — in a repeatable system that adapts across tools, platforms, and industries.**
 
 ---
 
