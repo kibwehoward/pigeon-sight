@@ -6,11 +6,11 @@
 
 ## From Pests to Programs
 
-PigeonSight grew out of a field inspection problem. Working in integrated pest management, the need to conduct site surveys over large or inaccessible areas pointed toward sUAS — small drones capable of capturing the imagery needed for orthomosaics, point clouds, elevation, and 3D models of habitats and structures. The tools to process that imagery existed. The process framework to manage the data reliably, repeatably, and without a proprietary subscription did not.
+PigeonSight grew out of a field inspection problem. Working in integrated pest management, the need to conduct site surveys over large or inaccessible areas pointed toward sUAS — small drones capable of capturing the imagery needed for orthomosaics, point clouds, elevation models, and 3D reconstructions of habitats and structures. The tools to process that imagery existed. What did not exist was a process framework for managing that data reliably, repeatably, and without requiring either a proprietary subscription or deep systems-administration expertise.
 
-The available commercial solutions were expensive and opaque. The stack — WebODM, PostGIS, QGIS — could do the work, but nothing defined *how* the workflow should be structured: what the stages were, what constituted done at each stage, how failures should be handled, or how a dataset should be traced from flight to delivery.
+Commercial and open-source offerings could process imagery, but they were often expensive, opaque, or tightly bound to vendor-specific workflows. The larger gap was methodological: nothing clearly defined how a drone-data workflow should be structured, what the stages were, what constituted done at each stage, how failures should be handled, or how a dataset should be traced from flight to delivery across tools and domains.
 
-PigeonSight is that framework. Seven stages, a formal QA gate, defined inputs and outputs at every step, and a reference implementation built entirely on open-source tools.
+PigeonSight is that framework. It defines seven stages, a formal QA gate, clear inputs and outputs at every step, and a repeatable definition of done from capture through stakeholder delivery. The reference implementation demonstrates the framework in practice, but the framework itself is designed to adapt across tools, platforms, and industries.
 
 ---
 
