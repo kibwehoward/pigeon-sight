@@ -25,7 +25,7 @@ PigeonSight is that framework. It defines seven stages, a formal QA gate, clear 
 
 ## The Framework
 
-PigeonSight defines seven stages for drone data workflows:
+PigeonSight defines seven stages for drone-data workflows:
 
 | Stage | Purpose |
 |-------|---------|
@@ -35,7 +35,7 @@ PigeonSight defines seven stages for drone data workflows:
 | **Cleaning** | Handle anomalies, normalize schemas, transform coordinates |
 | **Ingestion** | Load validated data into target storage systems |
 | **Analysis** | Query, model, and extract insights |
-| **Delivery** | Package and distribute results to end users |
+| **Delivery** | Package and distribute results to stakeholders and end users |
 
 Each stage has defined:
 - **Inputs** — What enters the stage
@@ -74,8 +74,9 @@ Any domain where drone imagery drives decision-making:
 - **Construction** — Site surveys, progress tracking, as-builts
 - **Disaster Response** — Damage assessment, search and rescue support
 - **Energy** — Infrastructure inspection, environmental compliance
-- **Government** — Land management, urban planning, parcel analysis
 - **Environmental** — Habitat mapping, change detection, erosion monitoring
+- **Government** — Land management, urban planning, parcel analysis
+- **Public Safety** — Intelligence, surveillance, and reconnaissance (ISR) missions
 
 ---
 
