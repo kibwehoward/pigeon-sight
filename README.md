@@ -1,6 +1,6 @@
 # PigeonSight
 
-**PigeonSight is a modular operational framework for drone-data workflows. It defines how imagery moves from capture to delivery — through intake, processing, QA, orchestration, and handoff — in a repeatable system that adapts across tools, platforms, and industries.**
+PigeonSight is a modular operational framework for drone-data workflows. It defines how imagery moves from capture to delivery — through intake, processing, QA, orchestration, and handoff — in a repeatable system that adapts across tools, platforms, and industries.
 
 ---
 
@@ -29,13 +29,13 @@ PigeonSight defines seven stages for drone data workflows:
 
 | Stage | Purpose |
 |-------|---------|
-| **Data Capture** | Acquire raw imagery and sensor data from drone flights |
-| **Data Processing** | Transform raw inputs into orthomosaics, point clouds, and DEMs |
-| **Data Validation** | QA/QC gate — verify data meets quality standards |
-| **Data Cleaning** | Handle anomalies, normalize schemas, transform coordinates |
-| **Data Ingestion** | Load validated data into target storage systems |
-| **Data Analysis** | Query, model, and extract insights |
-| **Stakeholder Delivery** | Package and distribute results to end users |
+| **Capture** | Acquire raw imagery and sensor data from drone flights |
+| **Processing** | Transform raw inputs into orthomosaics, point clouds, and digital elevation models (DEMs) |
+| **Validation** | QA/QC gate — verify data meets quality standards |
+| **Cleaning** | Handle anomalies, normalize schemas, transform coordinates |
+| **Ingestion** | Load validated data into target storage systems |
+| **Analysis** | Query, model, and extract insights |
+| **Delivery** | Package and distribute results to end users |
 
 Each stage has defined:
 - **Inputs** — What enters the stage
@@ -47,19 +47,22 @@ See the [workflow diagram](diagrams/workflow.md) for the full pipeline with rout
 
 ---
 
-## Reference Stack
+## Reference Tooling
 
-PigeonSight is designed around open-source tools. These are the reference implementations for each stage — other tools fit the same stages, but this is the stack the framework is built to demonstrate.
+PigeonSight is tool-agnostic by design. The framework defines the workflow, QA logic, and definition of done. The tools used to implement each stage may vary by budget, environment, technical requirements, or organizational preference. The examples below illustrate how different commercial, open-source, and enterprise platforms can support the same operational model.
 
-| Stage | Reference Tool |
-|-------|---------------|
-| Data Capture | DJI / senseFly / custom builds |
-| Data Processing | **WebODM** (NodeODM engine) |
-| Data Storage | **PostGIS** (PostgreSQL + spatial extension) |
-| Data Analysis | **QGIS** / Python (GeoPandas, Rasterio) |
-| Data Delivery | **GeoServer** / QGIS Server |
+| Stage | Example Tooling |
+|-------|----------------|
+| Capture | Skydio, DJI, senseFly, QGroundControl, Mission Planner, custom capture workflows |
+| Processing | WebODM, NodeODM, DroneDeploy, Pix4D, ArcGIS Drone2Map |
+| Validation | QGIS, ArcGIS, Python (GeoPandas, Rasterio, GDAL) |
+| Cleaning | QGIS, ArcGIS, Python (GeoPandas, Rasterio, GDAL) |
+| Ingestion | PostGIS/PostgreSQL, Amazon S3, Oracle Spatial, Microsoft SQL Server, custom ETL scripts |
+| Analysis | QGIS, ArcGIS, Python (GeoPandas, Rasterio, GDAL) |
+| Delivery | GeoServer, QGIS Server, ArcGIS Server |
 
-WebODM is the vanguard of this stack — it handles the most compute-intensive transformation (raw imagery → orthomosaic/point cloud/DEM) and its output format defines the schema expectations for downstream stages.
+
+At the front of this workflow is a processing stage that transforms raw imagery into the core derived products — orthomosaics, point clouds, elevation models, and related outputs — that downstream stages depend on. The framework defines the expectations for those outputs, regardless of which processing platform is used.
 
 ---
 
@@ -84,13 +87,13 @@ pigeon-sight/
 ├── docs/
 │   ├── overview.md
 │   └── stages/
-│       ├── 01-data-capture.md
-│       ├── 02-data-processing.md
-│       ├── 03-data-validation.md
-│       ├── 04-data-cleaning.md
-│       ├── 05-data-ingestion.md
-│       ├── 06-data-analysis.md
-│       └── 07-stakeholder-delivery.md
+│       ├── 01-capture.md
+│       ├── 02-processing.md
+│       ├── 03-validation.md
+│       ├── 04-cleaning.md
+│       ├── 05-ingestion.md
+│       ├── 06-analysis.md
+│       └── 07-delivery.md
 ├── diagrams/
 │   ├── workflow.md        # Mermaid diagram (renders on GitHub)
 │   └── workflow.svg       # Standalone SVG for embedding
