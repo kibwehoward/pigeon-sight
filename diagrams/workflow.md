@@ -13,17 +13,17 @@ flowchart TD
     CAP --> PRO
     PRO --> VAL
 
-    VAL -->|"Pass"| CLN
-    VAL -->|"Coverage gap<br/>(re-flight needed)"| CAP
-    VAL -->|"Processing artifact<br/>or CRS error"| PRO
-    VAL -->|"Schema / geometry<br/>errors"| CLN
+    VAL -->|"  Pass  "| CLN
+    VAL -->|"  Coverage gap<br/>(re-flight needed)  "| CAP
+    VAL -->|"  Processing artifact<br/>or CRS error  "| PRO
+    VAL -->|"  Schema / geometry<br/>errors  "| CLN
 
     CLN --> ING
     ING --> ANA
     ANA --> DEL
 
-    DEL -->|"Rejected — analysis issue"| ANA
-    DEL -->|"Rejected — data issue"| VAL
+    DEL -->|"  Rejected — analysis issue  "| ANA
+    DEL -->|"  Rejected — data issue  "| VAL
 
     style CAP fill:#1a1a2e,color:#fff,stroke:#4a9eff
     style PRO fill:#1a1a2e,color:#fff,stroke:#4a9eff
