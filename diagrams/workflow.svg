@@ -1,128 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 920" font-family="system-ui, sans-serif">
-
-  <!-- Background -->
-  <rect width="680" height="920" fill="#f8f9fa" rx="8"/>
-
-  <!-- Title -->
-  <text x="340" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">PigeonSight Workflow</text>
-
-  <!-- ── Stage boxes ── -->
-
-  <!-- 1. Data Capture -->
-  <rect x="215" y="60" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
-  <text x="340" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">1. Data Capture</text>
-  <text x="340" y="102" text-anchor="middle" font-size="11" fill="#aac4f0">Acquire raw drone imagery &amp; sensor data</text>
-
-  <!-- arrow 1→2 -->
-  <line x1="340" y1="116" x2="340" y2="148" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- 2. Data Processing -->
-  <rect x="215" y="148" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
-  <text x="340" y="172" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">2. Data Processing</text>
-  <text x="340" y="190" text-anchor="middle" font-size="11" fill="#aac4f0">WebODM → orthomosaic, point cloud, DSM/DTM</text>
-
-  <!-- arrow 2→3 -->
-  <line x1="340" y1="204" x2="340" y2="236" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- 3. Data Validation (diamond-ish rounded rect, amber) -->
-  <rect x="200" y="236" width="280" height="64" rx="32" fill="#2d1b00" stroke="#ff9900" stroke-width="2"/>
-  <text x="340" y="262" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">3. Data Validation</text>
-  <text x="340" y="280" text-anchor="middle" font-size="11" fill="#ffd580">QA / QC Gate</text>
-
-  <!-- arrow 3→4 (pass) -->
-  <line x1="340" y1="300" x2="340" y2="332" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <text x="352" y="320" font-size="10" fill="#4caf50">✓ Pass</text>
-
-  <!-- 4. Data Cleaning -->
-  <rect x="215" y="332" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
-  <text x="340" y="356" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">4. Data Cleaning</text>
-  <text x="340" y="374" text-anchor="middle" font-size="11" fill="#aac4f0">Void fill, noise filter, ground classify</text>
-
-  <!-- arrow 4→5 -->
-  <line x1="340" y1="388" x2="340" y2="420" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- 5. Data Ingestion -->
-  <rect x="215" y="420" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
-  <text x="340" y="444" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">5. Data Ingestion</text>
-  <text x="340" y="462" text-anchor="middle" font-size="11" fill="#aac4f0">Load to PostGIS</text>
-
-  <!-- arrow 5→6 -->
-  <line x1="340" y1="476" x2="340" y2="508" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- 6. Data Analysis -->
-  <rect x="215" y="508" width="250" height="56" rx="6" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
-  <text x="340" y="532" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">6. Data Analysis</text>
-  <text x="340" y="550" text-anchor="middle" font-size="11" fill="#aac4f0">QGIS / Python (GeoPandas, Rasterio, PDAL)</text>
-
-  <!-- arrow 6→7 -->
-  <line x1="340" y1="564" x2="340" y2="596" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-  <!-- 7. Stakeholder Delivery -->
-  <rect x="215" y="596" width="250" height="56" rx="6" fill="#0d2b0d" stroke="#4caf50" stroke-width="2"/>
-  <text x="340" y="620" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">7. Stakeholder Delivery</text>
-  <text x="340" y="638" text-anchor="middle" font-size="11" fill="#a5d6a7">GeoServer / QGIS layouts / data exports</text>
-
-  <!-- ── Failure routing ── -->
-
-  <!-- Fail: coverage gap → Stage 1 (left side, long) -->
-  <path d="M 215 262 C 80 262 80 88 215 88" fill="none" stroke="#ff5252" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
-  <text x="50" y="195" text-anchor="middle" font-size="9" fill="#ff5252" transform="rotate(-90,50,195)">✗ Coverage gap</text>
-
-  <!-- Fail: processing/CRS error → Stage 2 (left side, medium) -->
-  <path d="M 215 254 C 130 254 130 176 215 176" fill="none" stroke="#ff5252" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
-  <text x="108" y="222" text-anchor="middle" font-size="9" fill="#ff5252" transform="rotate(-90,108,222)">✗ WebODM artifact / CRS</text>
-
-  <!-- Fail: schema/geometry → Stage 4 (right side, short) -->
-  <path d="M 480 268 C 590 268 590 360 480 360" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowAmber)"/>
-  <text x="572" y="308" text-anchor="middle" font-size="9" fill="#ff9900" transform="rotate(90,572,308)">✗ Schema / geometry</text>
-
-  <!-- Rejected: data issue → Stage 3 (right side, long) -->
-  <path d="M 465 624 C 620 624 620 268 480 268" fill="none" stroke="#ff5252" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
-  <text x="635" y="470" text-anchor="middle" font-size="9" fill="#ff5252" transform="rotate(90,635,470)">Rejected — data issue</text>
-
-  <!-- Rejected: analysis issue → Stage 6 -->
-  <path d="M 465 612 C 540 612 540 536 465 536" fill="none" stroke="#ff9900" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowAmber)"/>
-  <text x="522" y="580" text-anchor="middle" font-size="9" fill="#ff9900" transform="rotate(90,522,580)">Rejected — analysis</text>
-
-  <!-- ── Legend ── -->
-  <rect x="30" y="760" width="620" height="130" rx="6" fill="#fff" stroke="#ddd" stroke-width="1"/>
-  <text x="340" y="782" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Legend</text>
-
-  <rect x="50" y="795" width="20" height="14" rx="3" fill="#1a1a2e" stroke="#4a9eff" stroke-width="1.5"/>
-  <text x="78" y="807" font-size="11" fill="#333">Pipeline stage</text>
-
-  <rect x="200" y="795" width="20" height="14" rx="7" fill="#2d1b00" stroke="#ff9900" stroke-width="1.5"/>
-  <text x="228" y="807" font-size="11" fill="#333">QA gate (blocking checkpoint)</text>
-
-  <rect x="430" y="795" width="20" height="14" rx="3" fill="#0d2b0d" stroke="#4caf50" stroke-width="1.5"/>
-  <text x="458" y="807" font-size="11" fill="#333">Terminal stage</text>
-
-  <line x1="50" y1="835" x2="90" y2="835" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="98" y="839" font-size="11" fill="#333">Normal progression</text>
-
-  <line x1="250" y1="835" x2="290" y2="835" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <text x="298" y="839" font-size="11" fill="#333">Pass (QA gate)</text>
-
-  <line x1="420" y1="835" x2="460" y2="835" stroke="#ff5252" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
-  <text x="468" y="839" font-size="11" fill="#333">Blocking failure — route back</text>
-
-  <line x1="50" y1="865" x2="90" y2="865" stroke="#ff9900" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowAmber)"/>
-  <text x="98" y="869" font-size="11" fill="#333">Advisory / partial failure — route back</text>
-
-  <!-- ── Arrowhead markers ── -->
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#666"/>
-    </marker>
-    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#4caf50"/>
-    </marker>
-    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#ff5252"/>
-    </marker>
-    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#ff9900"/>
-    </marker>
-  </defs>
-
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="980" viewBox="0 0 860 980">
+<rect width="860" height="980" fill="#0d1117"/>
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <polygon points="0 0, 8 3, 0 6" fill="#8899aa"/>
+  </marker>
+</defs>
+<line x1="430" y1="104" x2="430" y2="166" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="224" x2="430" y2="288" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="315" y1="405" x2="325" y2="475" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="374" y1="330" x2="317" y2="405" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="504" x2="430" y2="551" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="609" x2="430" y2="656" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="714" x2="430" y2="761" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 374 330 L 237 135" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 160 116 L 160 75 L 325 75" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 374 330 L 237 263" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 160 244 L 160 195 L 325 195" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 486 330 L 573 405" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 650 424 L 650 475 L 535 475" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 535 790 L 603 580" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 680 561 L 680 330 L 487 330" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 535 790 L 603 685" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 680 666 L 680 685 L 535 685" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="325" y="46" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="61.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">1. Capture</text>
+<text x="430" y="76.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Acquire raw drone imagery</text>
+<text x="430" y="91.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">and sensor data</text>
+<rect x="325" y="166" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="181.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">2. Processing</text>
+<text x="430" y="196.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Transform raw inputs into</text>
+<text x="430" y="211.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">orthomosaics, point clouds, DEMs</text>
+<polygon points="430,278 497.6,330 430,382 362.4,330" fill="#2d1b00" stroke="#ff9900" stroke-width="2"/>
+<text x="430" y="323.5" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">3. Validation</text>
+<text x="430" y="338.5" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">QA/QC Gate</text>
+<rect x="325" y="446" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="461.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">4. Cleaning</text>
+<text x="430" y="476.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Void fill, noise filter,</text>
+<text x="430" y="491.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">coordinate normalization</text>
+<rect x="325" y="551" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="566.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">5. Ingestion</text>
+<text x="430" y="581.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Load validated data</text>
+<text x="430" y="596.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">into target storage</text>
+<rect x="325" y="656" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="671.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">6. Analysis</text>
+<text x="430" y="686.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Query, model, and</text>
+<text x="430" y="701.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">extract insights</text>
+<rect x="325" y="761" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="776.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">7. Delivery</text>
+<text x="430" y="791.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Package and distribute results</text>
+<text x="430" y="806.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">to stakeholders</text>
+<rect x="165" y="386" width="150" height="38" rx="5" fill="#0d2b0d" stroke="#4caf50" stroke-width="2"/>
+<text x="240" y="406.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Pass</text>
+<rect x="85" y="116" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="160" y="136.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Re-flight</text>
+<rect x="85" y="244" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="160" y="264.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Reprocess</text>
+<rect x="563" y="386" width="175" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="650" y="406.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Schema / geometry errors</text>
+<rect x="605" y="561" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="680" y="581.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Data issue</text>
+<rect x="605" y="666" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="680" y="686.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Analysis issue</text>
 </svg>
