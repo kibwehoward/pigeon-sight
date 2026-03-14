@@ -48,3 +48,7 @@ The **Mission ID** is the linking key across all pipeline artifacts. The flight 
 Most drone data practitioners are highly skilled at operating equipment and processing imagery. Few apply formal process methodology to the workflow. The result is pipelines that are difficult to audit, hard to hand off, and inconsistent across runs.
 
 PigeonSight is an attempt to close that gap: to bring the rigor of gate-based software development — sprint structure, acceptance criteria, formal QA sign-off, audit trail — to a domain that has not typically demanded it.
+
+## Further Reading
+
+- [Framework Overview](overview.md) — Stage structure, routing rules, and links to all seven stage documents
