@@ -1,6 +1,6 @@
 # Methodology
 
-PigeonSight is not just a technical pipeline. It is a process framework — a deliberate application of software development methodology to a domain where ad hoc workflows are the norm.
+PigeonSight is not just a technical pipeline. It is a process framework — a deliberate application of Agile/Scrum and software development methodology to a domain where ad hoc workflows are the norm.
 
 ## Why Gate-Based Stages
 
@@ -18,7 +18,7 @@ Each pipeline run in PigeonSight is structured like a Scrum sprint:
 |-------|-------------|
 | Sprint backlog | Flight plan and mission parameters |
 | Sprint execution | Stages 1–2: capture and processing |
-| Sprint review / definition of done | Stage 3: Data Validation gate |
+| Sprint review / definition of done | Stage 3: Validation gate |
 | Sprint retrospective | Pipeline completion checklist (Stage 7) |
 | Velocity and capacity | QA metrics: GSD achieved, point cloud density, GCP residuals |
 
@@ -26,12 +26,12 @@ The analogy is not decorative. A sprint without a definition of done produces in
 
 ## Stage 3 as a Formal QA Gate
 
-Stage 3 (Data Validation) is the primary checkpoint in the pipeline. It functions as an SDLC-style QA gate:
+Stage 3 (Validation) is the primary checkpoint in the pipeline. It functions as an SDLC-style QA gate:
 
 - **Acceptance criteria** are defined in advance (the validation ruleset), not assessed after the fact
 - **Findings are classified** as blocking or advisory — blocking failures halt advancement; advisory issues are documented but do not stop the pipeline
-- **A decision record is required** — Pass, Conditional Pass, or Fail with explicit routing — so every gate outcome is auditable
-- **Failures route to root cause**, not just to the prior stage — a coverage gap routes back to Stage 1 (re-flight), a processing artifact routes back to Stage 2 (reprocess in WebODM)
+- **A decision record is required** — Pass or Fail with explicit routing — so every gate outcome is auditable
+- **Failures route to root cause**, not just to the prior stage — a coverage gap routes back to Stage 1 (re-flight), a processing artifact routes back to Stage 2 (reprocess)
 
 This is the same pattern as a QA sign-off in a software release cycle: defined criteria, documented outcome, traceable routing.
 
@@ -40,6 +40,8 @@ This is the same pattern as a QA sign-off in a software release cycle: defined c
 Every dataset that passes through PigeonSight carries a lineage record from original capture through final delivery. This is the equivalent of a commit history or a change log — a traceable record of what data entered the pipeline, what transformations were applied, and what decisions were made at each gate.
 
 The lineage record closes the loop between the QA checklist (what was verified) and the delivery artifact (what was delivered). Without it, a stakeholder question — "how was this orthomosaic produced?" — has no reliable answer.
+
+The **Mission ID** is the linking key across all pipeline artifacts. The flight plan, capture metadata record, validation ruleset, processing report, and delivery specification all reference the same Mission ID, creating a traceable thread from pre-flight planning through final delivery. Every stage document that references "the manifest" or "the lineage record" is ultimately referencing artifacts that share this identifier.
 
 ## Why This Matters
 

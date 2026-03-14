@@ -11,7 +11,7 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ---
 
-## Stage 1: Data Capture
+## Stage 1: Capture
 
 - [ ] All files in manifest are present
 - [ ] Checksums verified for all files
@@ -25,10 +25,10 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ---
 
-## Stage 2: Data Processing (WebODM)
+## Stage 2: Processing
 
-- [ ] WebODM task completed without errors; task ID recorded
-- [ ] Orthomosaic opens without errors in QGIS
+- [ ] Processing task completed without errors; task ID recorded
+- [ ] Output files open without errors in a compatible GIS application
 - [ ] Output CRS matches target CRS
 - [ ] Spatial extent consistent with Stage 1 capture extent
 - [ ] Orthomosaic GSD meets target resolution
@@ -41,10 +41,10 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ---
 
-## Stage 3: Data Validation
+## Stage 3: Validation
 
 - [ ] All validation rules have a recorded result
-- [ ] All blocking rules passed (or exceptions formally documented and approved)
+- [ ] All blocking rules passed
 - [ ] GSD confirmed against flight plan target
 - [ ] Point cloud density confirmed against minimum threshold
 - [ ] Output CRS consistent across all products (orthomosaic, DSM/DTM, point cloud)
@@ -52,13 +52,13 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 - [ ] No data voids in coverage area
 - [ ] Coverage meets minimum threshold for area of interest
 
-**Decision:** `[ ] Pass` &nbsp; `[ ] Conditional Pass` &nbsp; `[ ] Fail — route to Stage ___`
+**Decision:** `[ ] Pass` &nbsp; `[ ] Fail — route to Stage ___`
 
 **Advisory notes:**
 
 ---
 
-## Stage 4: Data Cleaning
+## Stage 4: Cleaning
 
 - [ ] Orthomosaic voids filled or masked; no artifacts at fill boundaries
 - [ ] Point cloud noise filtered; ground classification complete across full extent
@@ -72,45 +72,46 @@ Use this checklist at each pipeline stage gate. Complete all blocking items befo
 
 ---
 
-## Stage 5: Data Ingestion (PostGIS)
+## Stage 5: Ingestion
 
-- [ ] Record or tile count in PostGIS matches expected count from manifest
+- [ ] Record or tile count in target storage matches expected count from manifest
 - [ ] Spatial index built and functional (verified with sample query)
-- [ ] Spot-check in QGIS returns correct geometry and attributes
+- [ ] Spot-check against ingested data returns correct geometry and attributes
 - [ ] No attribute truncation or coordinate precision loss
 - [ ] Re-run with same manifest does not create duplicates
-- [ ] Lineage record complete (references Stage 1 capture metadata and Stage 2 WebODM task ID)
+- [ ] Lineage record complete (references Stage 1 capture metadata and Stage 2 processing task ID)
 
 **Advisory notes:**
 
 ---
 
-## Stage 6: Data Analysis (QGIS / Python)
+## Stage 6: Analysis
 
-- [ ] Results are reproducible with same inputs (SQL, QGIS project, or Python script retained)
+- [ ] Results are reproducible with same inputs (analysis scripts or project files retained)
 - [ ] All inputs are traceable (no undocumented external data)
 - [ ] Spatial operations used correct CRS; results in expected CRS
 - [ ] Derived layers have no geometry errors
 - [ ] Edge cases handled and documented (masked areas, null values, out-of-range raster inputs)
 - [ ] Results sanity-checked against ground truth, reference areas, or historical flight values
 - [ ] Model accuracy assessment complete (if applicable)
+- [ ] Analysis documentation references Stage 3 validation report and carries forward any documented limitations
 
 **Advisory notes:**
 
 ---
 
-## Stage 7: Stakeholder Delivery (GeoServer / QGIS)
+## Stage 7: Delivery
 
 - [ ] All requested artifacts present and match delivery specification
 - [ ] Artifacts open correctly in stakeholder tools
-- [ ] GeoServer services return correct data and render without errors (if applicable)
+- [ ] Web services return correct data and render without errors (if applicable)
 - [ ] Spatial exports in stakeholder-specified CRS
 - [ ] Access controls applied and verified
 - [ ] Metadata and attribution included in all deliverables
 - [ ] Known limitations from Stage 6 communicated in delivery package
 - [ ] Delivery confirmation received from stakeholders
 - [ ] All stage outputs and logs archived
-- [ ] Complete lineage record filed (capture → WebODM → PostGIS → analysis → delivery)
+- [ ] Complete lineage record filed (capture → processing → validation → cleaning → ingestion → analysis → delivery)
 
 **Advisory notes:**
 

@@ -1,6 +1,6 @@
-# Stage 2: Data Processing
+# Stage 2: Processing
 
-Transform raw drone imagery into analysis-ready geospatial products. This stage handles photogrammetric reconstruction, georeferencing, and output generation. The reference implementation uses **WebODM** (NodeODM engine).
+Transform raw drone imagery into analysis-ready geospatial products. This stage handles photogrammetric reconstruction, georeferencing, and output generation.
 
 ## Inputs
 
@@ -8,7 +8,7 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
 - Capture metadata record from Stage 1
 - Processing configuration:
   - Target CRS and output resolution
-  - WebODM task parameters (point cloud quality, mesh octree depth, orthomosaic resolution, feature extraction settings)
+  - Processing engine task parameters (point cloud quality, mesh octree depth, orthomosaic resolution, feature extraction settings)
 - Ground control points (GCPs) if enhanced positional accuracy is required
 
 ## Outputs
@@ -19,7 +19,7 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
   - Digital surface model / digital terrain model (DSM/DTM, GeoTIFF)
   - 3D mesh (optional, OBJ/PLY)
 - Processing report including:
-  - WebODM task ID, software version, and parameters applied
+  - Processing task ID, software version, and parameters applied
   - Output CRS and resolution
   - Processing timestamp
   - GCP residuals (if GCPs were used)
@@ -28,7 +28,7 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
 
 ## QA Criteria
 
-- Output files open without errors in QGIS
+- Output files open without errors in a compatible GIS application
 - Output CRS matches the target CRS specified in the configuration
 - Spatial extent of outputs is consistent with the capture extent from Stage 1
 - Orthomosaic resolution (GSD) meets the specified target within acceptable tolerance
@@ -41,8 +41,8 @@ Transform raw drone imagery into analysis-ready geospatial products. This stage 
 
 | Failure | Response |
 |---------|----------|
-| WebODM task fails or crashes | Capture full task log; retry with diagnostics enabled; adjust processing parameters if systematic |
+| Processing task fails or crashes | Capture full task log; retry with diagnostics enabled; adjust processing parameters if systematic |
 | Output resolution (GSD) below target | Check input overlap and altitude; determine if re-flight or adjusted parameters can resolve |
-| CRS mismatch in output | Reproject to target CRS using QGIS or GDAL; log the discrepancy and resolution |
+| CRS mismatch in output | Reproject to target CRS using available reprojection tools; log the discrepancy and resolution |
 | Data voids in orthomosaic or point cloud | Identify whether void originates from coverage gap (return to Stage 1) or processing artifact (reprocess) |
 | GCP accuracy insufficient | Review GCP placement and coordinate accuracy; reprocess with corrected GCPs |

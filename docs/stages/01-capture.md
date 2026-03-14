@@ -1,4 +1,4 @@
-# Stage 1: Data Capture
+# Stage 1: Capture
 
 Acquire raw imagery and sensor data from drone flights. This is the entry point of the pipeline.
 
@@ -34,6 +34,6 @@ Acquire raw imagery and sensor data from drone flights. This is the entry point 
 |---------|----------|
 | Missing files or checksum mismatch | Flag for re-transfer or re-capture; do not advance to Stage 2 |
 | Coverage gap in area of interest | Log gap extent; determine whether re-flight is required before proceeding |
-| Overlap/sidelap below minimum | Assess whether WebODM can reconstruct from available data; re-fly affected strips if not |
+| Overlap/sidelap below minimum | Assess whether the processing engine can reconstruct from available data; re-fly affected strips if not |
 | Metadata incomplete | Attempt to derive missing fields from EXIF/XMP headers; if unresolvable, halt and request clarification |
 | Flight interrupted or aborted mid-mission | Log coverage achieved; determine whether partial dataset is sufficient or re-flight is required |

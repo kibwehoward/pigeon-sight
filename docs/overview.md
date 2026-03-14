@@ -1,10 +1,10 @@
 # PigeonSight Framework Overview
 
-PigeonSight is a process framework for drone data workflows. It defines a standardized methodology for moving drone data from flight to stakeholder delivery, built around the FOSS4G stack with WebODM at its core.
+PigeonSight is a process framework for drone data workflows. It defines a standardized methodology for moving drone data from flight to stakeholder delivery, built around gate-based progression and full dataset lineage.
 
 ## Design Principles
 
-**Reference stack.** The framework defines *what* happens at each stage; the FOSS4G stack defines the reference *how*: WebODM for photogrammetric processing, PostGIS for spatial storage, QGIS and Python for analysis, GeoServer for delivery. Other tools fit the same stages, but the reference implementations use this stack.
+**Tool-agnostic by design.** The framework defines *what* happens at each stage; the tools used to implement each stage may vary by budget, environment, technical requirements, or organizational preference. Any platform that meets the stage's input and output requirements fits the framework.
 
 **Gate-based progression.** Each stage produces defined outputs and must meet QA criteria before the next stage begins. Data that fails validation is routed back — not forward.
 
@@ -21,12 +21,12 @@ PigeonSight is a process framework for drone data workflows. It defines a standa
 | Stage | Purpose | Gate |
 |-------|---------|------|
 | [1. Capture](stages/01-capture.md) | Acquire raw imagery and sensor data from drone flights | Manifest complete, checksums match, overlap verified |
-| [2. Processing](stages/02-processing.md) | Generate orthomosaic, point cloud, DSM/DTM via WebODM | Output meets target CRS, GSD, and point cloud density |
+| [2. Processing](stages/02-processing.md) | Generate orthomosaic, point cloud, DSM/DTM | Output meets target CRS, GSD, and point cloud density |
 | [3. Validation](stages/03-validation.md) | QA/QC checkpoint | All blocking rules pass |
 | [4. Cleaning](stages/04-cleaning.md) | Normalize, repair, standardize | Schema conformant, issues resolved |
-| [5. Ingestion](stages/05-ingestion.md) | Load to PostGIS | Record counts match, spatial index built |
+| [5. Ingestion](stages/05-ingestion.md) | Load to target storage | Record counts match, spatial index built |
 | [6. Analysis](stages/06-analysis.md) | Query, model, extract insights | Results reproducible, sanity-checked |
-| [7. Delivery](stages/07-delivery.md) | Distribute via GeoServer, QGIS layouts, or data exports | Artifacts delivered, receipt confirmed |
+| [7. Delivery](stages/07-delivery.md) | Distribute results to stakeholders | Artifacts delivered, receipt confirmed |
 
 ## Stage Document Structure
 

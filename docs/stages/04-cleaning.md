@@ -1,4 +1,4 @@
-# Stage 4: Data Cleaning
+# Stage 4: Cleaning
 
 Normalize, repair, and transform validated drone data into a consistent, analysis-ready state. This stage resolves issues identified in Stage 3 and standardizes the dataset for ingestion.
 
@@ -41,6 +41,6 @@ Normalize, repair, and transform validated drone data into a consistent, analysi
 |---------|----------|
 | Orthomosaic void cannot be filled acceptably | Mask the void and document extent; flag for re-flight if area is critical to the analysis |
 | Point cloud noise or artifacts are systematic, not isolated | Escalate to Stage 2; systematic artifacts indicate a processing problem rather than a cleaning task |
-| Ground classification fails over complex terrain | Adjust PDAL/CloudCompare classification parameters; document parameter choices in cleaning log |
+| Ground classification fails over complex terrain | Adjust point cloud classification parameters; document parameter choices in cleaning log |
 | Cleaning introduces new validation failures | Re-run Stage 3 validation rules against cleaned output before advancing |
 | Volume of issues exceeds threshold for automated cleaning | Halt and escalate; systematic issues may indicate a Stage 2 processing problem |
