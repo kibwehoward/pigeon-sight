@@ -47,3 +47,5 @@ Each stage document defines:
 - **Advisory** issues are documented but do not block advancement.
 - Failures route back to the earliest stage where the root cause can be addressed — not necessarily the immediately preceding stage.
 - Any routing decision (advance, hold, route back) should be recorded in the relevant stage report.
+
+See the [workflow diagram](../diagrams/workflow.md) for the full set of routing labels and their definitions.
