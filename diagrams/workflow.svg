@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="980" viewBox="0 0 860 980">
+<rect width="860" height="980" fill="#0d1117"/>
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <polygon points="0 0, 8 3, 0 6" fill="#8899aa"/>
+  </marker>
+</defs>
+<line x1="430" y1="104" x2="430" y2="166" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="224" x2="430" y2="288" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="315" y1="405" x2="325" y2="475" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="374" y1="330" x2="317" y2="405" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="504" x2="430" y2="551" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="609" x2="430" y2="656" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="430" y1="714" x2="430" y2="761" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 374 330 L 237 135" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 160 116 L 160 75 L 325 75" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 374 330 L 237 263" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 160 244 L 160 195 L 325 195" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 486 330 L 573 405" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 650 424 L 650 475 L 535 475" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 535 790 L 603 580" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 680 561 L 680 330 L 487 330" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 535 790 L 603 685" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M 680 666 L 680 685 L 535 685" fill="none" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="325" y="46" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="61.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">1. Capture</text>
+<text x="430" y="76.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Acquire raw drone imagery</text>
+<text x="430" y="91.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">and sensor data</text>
+<rect x="325" y="166" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="181.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">2. Processing</text>
+<text x="430" y="196.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Transform raw inputs into</text>
+<text x="430" y="211.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">orthomosaics, point clouds, DEMs</text>
+<polygon points="430,278 497.6,330 430,382 362.4,330" fill="#2d1b00" stroke="#ff9900" stroke-width="2"/>
+<text x="430" y="323.5" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">3. Validation</text>
+<text x="430" y="338.5" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">QA/QC Gate</text>
+<rect x="325" y="446" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="461.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">4. Cleaning</text>
+<text x="430" y="476.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Void fill, noise filter,</text>
+<text x="430" y="491.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">coordinate normalization</text>
+<rect x="325" y="551" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="566.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">5. Ingestion</text>
+<text x="430" y="581.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Load validated data</text>
+<text x="430" y="596.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">into target storage</text>
+<rect x="325" y="656" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="671.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">6. Analysis</text>
+<text x="430" y="686.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Query, model, and</text>
+<text x="430" y="701.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">extract insights</text>
+<rect x="325" y="761" width="210" height="58" rx="5" fill="#1a1a2e" stroke="#4a9eff" stroke-width="2"/>
+<text x="430" y="776.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">7. Delivery</text>
+<text x="430" y="791.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">Package and distribute results</text>
+<text x="430" y="806.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="12" font-weight="normal">to stakeholders</text>
+<rect x="165" y="386" width="150" height="38" rx="5" fill="#0d2b0d" stroke="#4caf50" stroke-width="2"/>
+<text x="240" y="406.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Pass</text>
+<rect x="85" y="116" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="160" y="136.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Re-flight</text>
+<rect x="85" y="244" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="160" y="264.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Reprocess</text>
+<rect x="563" y="386" width="175" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="650" y="406.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Schema / geometry errors</text>
+<rect x="605" y="561" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="680" y="581.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Data issue</text>
+<rect x="605" y="666" width="150" height="38" rx="5" fill="#2d2200" stroke="#ffcc00" stroke-width="2"/>
+<text x="680" y="686.0" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Analysis issue</text>
+</svg>
